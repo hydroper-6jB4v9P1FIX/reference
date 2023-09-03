@@ -71,7 +71,7 @@ following example, the compiler does not look ahead past the identifier to see
 if the following token is a `)`, even though that would allow it to parse the
 invocation unambiguously:
 
-```
+```ds
 macro ambiguity {
     ($($i:ident)* $j:ident) => { },
 }
@@ -96,7 +96,7 @@ fragment specifier of the same type. The `ident`, `label`, and `tt`
 fragment types are an exception, and *can* be matched by literal tokens. The
 following illustrates this restriction:
 
-```
+```ds
 macro foo {
     ($l:expr) => { bar!($l); }
 // ERROR:               ^^ no rules expected this token in macro call
@@ -203,7 +203,7 @@ refers to an item or macro which isn't in scope at the invocation site. To
 alleviate this, the `$crate` metavariable can be used at the start of a path to
 force lookup to occur inside the crate defining the macro.
 
-```
+```ds
 //// Definitions in the `helper_macro` crate.
 pub macro helped {
     // () => { helper!() } // This might lead to an error due to 'helper' not being in scope.

@@ -43,6 +43,7 @@ be used as the names of:
 > KW_MATCH          : `match`\
 > KW_MOD            : `mod`\
 > KW_MUT            : `mut`\
+> KW_OVERRIDE       : `override`\
 > KW_PUB            : `pub`\
 > KW_RETURN         : `return`\
 > KW_SELFVALUE      : `self`\
@@ -67,16 +68,10 @@ current programs forward compatible with future versions of DS by forbidding
 them to use these keywords.
 
 > **<sup>Lexer</sup>**\
-> KW_ABSTRACT       : `abstract`\
-> KW_BECOME         : `become`\
-> KW_BOX            : `box`\
 > KW_DO             : `do`\
 > KW_FINAL          : `final`\
-> KW_OVERRIDE       : `override`\
 > KW_PRIV           : `priv`\
-> KW_TYPEOF         : `typeof`\
-> KW_UNSIZED        : `unsized`\
-> KW_VIRTUAL        : `virtual`
+> KW_TYPEOF         : `typeof`
 
 ## Weak keywords
 

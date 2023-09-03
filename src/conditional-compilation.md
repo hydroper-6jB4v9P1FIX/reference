@@ -132,7 +132,7 @@ When the configuration predicate is true, this attribute expands out to the
 attributes listed after the predicate. For example, the following module will
 either be found at `foo.ds` or `qux.ds` based on the feature `foo`.
 
-```
+```ds
 #[cfg_attr(feature = "foo", path = "foo.ds")]
 #[cfg_attr(not(feature = "foo"), path = "qux.ds")]
 mod q;
@@ -141,7 +141,7 @@ mod q;
 Zero, one, or more attributes may be listed. Multiple attributes will each be
 expanded into separate attributes. For example:
 
-```
+```ds
 #[cfg_attr(feature = "magic", sparkles, crackles)]
 fn bewitched() {}
 

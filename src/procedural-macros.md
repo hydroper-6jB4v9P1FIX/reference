@@ -81,7 +81,7 @@ other functions (like `__internal_foo` instead of `foo`).
 
 A series of procedural macros are defined within the `proc_macros!` macro. It refers to a Rust project by indicating its path relative to the current source's parent directory:
 
-```
+```ds
 proc_macros! {
     lang = "rust";
     path = "./my_proc_macros";
@@ -98,7 +98,7 @@ the macro invocation operator (`!`).
 These macros are defined by a function with the `proc_macro`
 [attribute] inside a `proc_macros!` section, using an empty signature.
 
-```
+```ds
 proc_macros! {
     lang = "rust";
     path = "./my_proc_macros";
@@ -122,7 +122,7 @@ They can also define [derive macro helper attributes].
 Custom derive macros are defined by a function with the
 `proc_macro_derive` attribute and an empty signature inside a `proc_macros` section:
 
-```
+```ds
 proc_macros! {
     lang = "rust";
     path = "./my_proc_macros";

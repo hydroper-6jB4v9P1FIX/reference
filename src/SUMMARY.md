@@ -1,8 +1,4 @@
-# Language Reference
-
-Primary reference for the DS language. It is copy-pasted from Rust with deep simplification and legacy interoperability with ActionScript.
-
-> **Note**: Parts of the reference that are undecided have a **Undecided Part** quote.
+# Summary
 
 - [Notation](notation.md)
 - [Lexical structure](lexical-structure.md)

@@ -97,7 +97,7 @@ A literal token with any suffix can be passed to a macro without producing an er
 The macro itself will decide how to interpret such a token and whether to produce an error or not.
 In particular, the `literal` fragment specifier for by-example macros matches literal tokens with arbitrary suffixes.
 
-```
+```ds
 macro blackhole { ($tt:tt) => () }
 macro blackhole_lit { ($l:literal) => () }
 

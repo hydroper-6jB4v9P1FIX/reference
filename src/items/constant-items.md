@@ -15,7 +15,7 @@ If the constant item is an inlined constant, its expression is expanded wherever
 
 Examples:
 
-```
+```ds
 const MAX: f64 = 10_000.0;
 
 fn f() {

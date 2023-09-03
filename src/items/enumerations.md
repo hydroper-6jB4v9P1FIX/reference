@@ -84,7 +84,7 @@ enum Enum {
 
 Each enum instance has a _discriminant_. The discriminant type is `()` by default. A discriminant type `T` can be specified by using `#[discriminant(T)]` and `T` must implement `Eq | PartialEq`; for example:
 
-```
+```ds
 #[discriminant(str)]
 enum E {
     Foo = "foo",
@@ -116,7 +116,7 @@ assert_eq!("x", E::X.into());
 
 Retrieving a variant from a discriminant value is possible for unit-only enums. `TryFrom<D>` is implemented for unit-only `PartialEq` enums where `D` is the discriminant type.
 
-```
+```ds
 #[discriminant(str)]
 #[derive(PartialEq)]
 enum E {

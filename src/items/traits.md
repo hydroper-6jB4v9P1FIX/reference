@@ -52,7 +52,7 @@ Trait functions are not allowed to be [`async`] or [`extern`].
 
 A trait can be used normally as an opaque type.
 
-```
+```ds
 trait Tr {}
 struct S;
 impl Tr for S {}

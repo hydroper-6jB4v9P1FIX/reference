@@ -43,7 +43,7 @@ pub enum E {
 
 _Structural enumeration:_ Structural enumerations must specify a type property and their discriminant type must be `str`. The type property is specified through the `#[ser(type_property = "type")]` attribute.
 
-```
+```ds
 #[derive(Serializable)]
 #[ser(type_property = "type")]
 #[discriminant(str)]

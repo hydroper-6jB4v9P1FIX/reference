@@ -8,7 +8,7 @@
 > &nbsp;&nbsp; &nbsp;&nbsp; ( [_BlockExpression_] | `;` )
 >
 > _FunctionQualifiers_ :\
-> &nbsp;&nbsp; `async`<sup>?</sup> `extern`<sup>?</sup>
+> &nbsp;&nbsp; `async`<sup>?</sup> `extern`<sup>?</sup> `override`<sup>?</sup>
 >
 > _FunctionParameters_ :\
 > &nbsp;&nbsp; &nbsp;&nbsp; _SelfParam_ `,`<sup>?</sup>\
@@ -95,7 +95,7 @@ A constructor method (a `new` method inside a `struct`) must have a signature th
 
 Example of a constructor:
 
-```
+```ds
 struct S;
 impl S {
     fn new(self) {}
@@ -157,7 +157,7 @@ An external function may use the `#[actionscript]` attribute with the following 
 
 Examples of external functions:
 
-```
+```ds
 #[actionscript(package = "com.q")]
 extern fn some_function();
 
@@ -173,6 +173,16 @@ impl S {
 
     #[actionscript(set, name = "x")]
     extern fn set_x(self, value: f64);
+}
+```
+
+## Overriding
+
+If a method function overrides a method in a super structure, it must be marked `override`. The override signature must be of the same function type.
+
+```ds
+impl S {
+    pub override fn f(self) {}
 }
 ```
 
