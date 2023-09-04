@@ -150,7 +150,8 @@ The `extern` keyword indicates that a function is external and is imported from 
 
 An external function may use the `#[actionscript]` attribute with the following possible key-value pairs and names:
 
-- `package = "q1.q2"`: indicates the ActionScript package that qualifies the function. The `public` visibility is used.
+- `package = "q1.q2"`: indicates the ActionScript package that qualifies the function.
+- `protected`: indicates that the imported item uses the `protected` namespace of the outer ActionScript package.
 - `name = "name"`: indicates the ActionScript property name.
 - `get`: indicates that the imported ActionScript item is a variable or virtual property and that the external function is equivalent to a get-property operation.
 - `set`: indicates that the imported ActionScript item is a variable or virtual property and that the external function is equivalent to a set-property operation.
