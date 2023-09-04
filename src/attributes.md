@@ -230,9 +230,13 @@ The following is an index of all built-in attributes.
 - Features
   - `feature` — Used to enable unstable or experimental compiler features.
 - Type System
+  - `inheritable` — Indicates that a structure is inheritable.
+  - `discriminant` — Indicates the discriminant type of an enumeration.
   - [`inline`] — Indicates an inlined constant at any context.
   - [`non_exhaustive`] — Indicate that a type will have more fields/variants
     added in future.
+- Serialization
+  `ser`
 
 [Doc comments]: comments.md#doc-comments
 [ECMA-334]: https://www.ecma-international.org/publications/standards/Ecma-334.htm
