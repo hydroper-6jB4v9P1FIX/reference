@@ -206,36 +206,16 @@ The following is an index of all built-in attributes.
   - [`automatically_derived`] — Marker for implementations created by
     `derive`.
 - Macros
-  - [`macro_export`] — Exports a `macro_rules` macro for cross-crate usage.
-  - [`macro_use`] — Expands macro visibility, or imports macros from other
-    crates.
   - [`proc_macro`] — Defines a function-like macro.
   - [`proc_macro_derive`] — Defines a derive macro.
   - [`proc_macro_attribute`] — Defines an attribute macro.
 - Diagnostics
   - [`allow`], [`warn`], [`deny`], [`forbid`] — Alters the default lint level.
   - [`deprecated`] — Generates deprecation notices.
-  - [`must_use`] — Generates a lint for unused values.
-- ABI, linking, symbols, and FFI
-  - [`link`] — Specifies a native library to link with an `extern` block.
-  - [`link_name`] — Specifies the name of the symbol for functions or statics
-    in an `extern` block.
-  - [`link_ordinal`] — Specifies the ordinal of the symbol for functions or
-    statics in an `extern` block.
-  - [`no_link`] — Prevents linking an extern crate.
-  - [`repr`] — Controls type layout.
+- ABI, linking, symbols and FFI
   - [`crate_type`] — Specifies the type of crate (library, executable, etc.).
-  - [`no_main`] — Disables emitting the `main` symbol.
-  - [`export_name`] — Specifies the exported symbol name for a function or
-    static.
-  - [`link_section`] — Specifies the section of an object file to use for a
-    function or static.
-  - [`no_mangle`] — Disables symbol name encoding.
-  - [`used`] — Forces the compiler to keep a static item in the output
-    object file.
   - [`crate_name`] — Specifies the crate name.
 - Code generation
-  - [`inline`] — Hint to inline code.
   - [`cold`] — Hint that a function is unlikely to be called.
   - [`no_builtins`] — Disables use of certain built-in functions.
   - [`target_feature`] — Configure platform-specific code generation.
@@ -261,6 +241,7 @@ The following is an index of all built-in attributes.
   - `feature` — Used to enable unstable or experimental compiler features. See
     [The Unstable Book] for features implemented in `dsc`.
 - Type System
+  - [`inline`] — Indicates an inlined constant at any context.
   - [`non_exhaustive`] — Indicate that a type will have more fields/variants
     added in future.
 - Debugger
