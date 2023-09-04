@@ -215,14 +215,8 @@ The following is an index of all built-in attributes.
 - ABI, linking, symbols and FFI
   - [`crate_type`] — Specifies the type of crate (library, executable, etc.).
   - [`crate_name`] — Specifies the crate name.
-- Code generation
-  - [`cold`] — Hint that a function is unlikely to be called.
-  - [`no_builtins`] — Disables use of certain built-in functions.
-  - [`target_feature`] — Configure platform-specific code generation.
-  - [`track_caller`] - Pass the parent call location to `std::panic::Location::caller()`.
-  - [`instruction_set`] - Specify the instruction set used to generate a functions code
 - Documentation
-  - `doc` — Specifies documentation. See [The DSdoc Book] for more
+  - `doc` — Specifies documentation. See [The DSDoc Book] for more
     information. [Doc comments] are transformed into `doc` attributes.
 - Preludes
   - [`no_std`] — Removes std from the prelude.
@@ -233,19 +227,12 @@ The following is an index of all built-in attributes.
   - [`recursion_limit`] — Sets the maximum recursion limit for certain
     compile-time operations.
   - [`type_length_limit`] — Sets the maximum size of a polymorphic type.
-- Runtime
-  - [`panic_handler`] — Sets the function to handle panics.
-  - [`global_allocator`] — Sets the global memory allocator.
-  - [`windows_subsystem`] — Specifies the windows subsystem to link with.
 - Features
-  - `feature` — Used to enable unstable or experimental compiler features. See
-    [The Unstable Book] for features implemented in `dsc`.
+  - `feature` — Used to enable unstable or experimental compiler features.
 - Type System
   - [`inline`] — Indicates an inlined constant at any context.
   - [`non_exhaustive`] — Indicate that a type will have more fields/variants
     added in future.
-- Debugger
-  - [`debugger_visualizer`] — Embeds a file that specifies debugger output for a type.
 
 [Doc comments]: comments.md#doc-comments
 [ECMA-334]: https://www.ecma-international.org/publications/standards/Ecma-334.htm
@@ -254,7 +241,7 @@ The following is an index of all built-in attributes.
 [IDENTIFIER]: identifiers.md
 [RAW_STRING_LITERAL]: tokens.md#raw-string-literals
 [STRING_LITERAL]: tokens.md#string-literals
-[The DSdoc Book]: ../dsdoc/the-doc-attribute.html
+[The DSDoc Book]: ../dsdoc/the-doc-attribute.html
 [The Unstable Book]: ../unstable-book/index.html
 [_DelimTokenTree_]: macros.md
 [_Expression_]: expressions.md
