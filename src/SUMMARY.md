@@ -28,3 +28,4 @@
   - [Associated items](items/associated-items.md)
 - [Inheritance](inheritance.md)
 - [Serialization](serialization.md)
+- [XML](xml.md)
