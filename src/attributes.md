@@ -184,8 +184,8 @@ Tool attributes are not available if the [`no_implicit_prelude`] attribute is
 used.
 
 ```ds
-// Tells the `divescript format` tool to not format the following element.
-#[divescriptformat::skip]
+// Tells the `format` tool to not format the following element.
+#[ds::tools::fmt::skip]
 struct S {
 }
 ```
