@@ -2,7 +2,7 @@
 
 DiveScript language reference.
 
-This book is written using [mdBook](https://rust-lang.github.io/mdBook/).
+This book is written using [mdBook](https://rust-lang.github.io/mdBook/) and was mostly copy-pasted from the Rust language reference.
 
 ## Syntax Highlighting
 

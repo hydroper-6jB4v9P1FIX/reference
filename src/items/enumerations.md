@@ -159,18 +159,7 @@ enum E {
 
 ## Representation
 
-Enums are passed by value by default. The `rc` attribute indicates the enum is passed by reference.
-
-## `rc` attribute
-
-Adding the `rc` attribute to an enum makes it a reference-counted enum and auto implements `Hash` based on the reference.
-
-```ds
-#[rc]
-enum E {}
-```
-
-The user may need to consider the `rc_eq!` and `rc_ne!` macros when comparing references or simply use `#[derive(RcEq)]`.
+Like tuples and structs, enums are reference types. Reference equality is tested for using `.ref_eq` or `.ref_ne`.
 
 [IDENTIFIER]: ../identifiers.md
 [_GenericParams_]: generics.md

@@ -78,7 +78,7 @@ A field is mutable by using the `mut` keyword.
 
 ## Representation
 
-Structs are passed by value by default. The `rc` attribute indicates the struct is passed by reference.
+Like tuples and enums, structs are reference types. Reference equality is tested for using `.ref_eq` or `.ref_ne`.
 
 ## `rc` attribute
 
@@ -89,7 +89,7 @@ Adding the `rc` attribute to a struct makes it a reference-counted struct and au
 struct S {}
 ```
 
-The user may need to consider the `rc_eq!` and `rc_ne!` macros when comparing references or simply use `#[derive(RcEq)]`.
+The user may need to consider the `ref_eq!` and `ref_ne!` macros when comparing references or simply use `#[derive(RcEq)]`.
 
 ## External struct
 

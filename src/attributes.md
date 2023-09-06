@@ -228,7 +228,6 @@ The following is an index of all built-in attributes.
 - Features
   - `feature` — Used to enable unstable or experimental compiler features.
 - Type System
-  - `rc` — Indicates a struct or enum is reference-counted.
   - `import` — Used by external functions and structs to indicate the name to import from a platform.
   - `inheritable` — Indicates that a structure is inheritable.
   - `discriminant` — Indicates the discriminant type of an enumeration.

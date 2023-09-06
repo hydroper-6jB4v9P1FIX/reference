@@ -1,5 +1,6 @@
 # Summary
 
+- [Disclaimer](disclaimer.md)
 - [Notation](notation.md)
 - [Lexical structure](lexical-structure.md)
   - [Input format](input-format.md)
@@ -27,4 +28,5 @@
   - [Generic parameters](items/generics.md)
   - [Associated items](items/associated-items.md)
 - [Attributes](attributes.md)
+  - [Testing](testing.md)
 - [Serialization](serialization.md)

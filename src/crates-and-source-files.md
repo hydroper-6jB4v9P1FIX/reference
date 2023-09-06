@@ -72,9 +72,13 @@ is ignored by the compiler.
 ## Main Functions
 
 A crate that contains a `main` [function] can be compiled to an executable. If a
-`main` function is present, it must take no arguments, must not be generic, must not declare any
+`main` function is present, it must take no arguments, must not be monomorphic, must not declare any
 [trait bounds], must not have any [where clauses], and its return
-type must be `()`.
+type must be one of the following:
+
+- `()`
+- `ds::io::Result<()>`
+- `!`
 
 ```ds
 fn main() {}
