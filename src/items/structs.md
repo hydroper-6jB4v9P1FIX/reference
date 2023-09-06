@@ -12,7 +12,6 @@
 > &nbsp;&nbsp; _StructQualifiers_ `struct`
 >   [IDENTIFIER]&nbsp;
 >   [_GenericParams_]<sup>?</sup>
->   _InheritedStruct_<sup>?</sup>
 >   [_WhereClause_]<sup>?</sup>
 >   ( `{` _StructFields_<sup>?</sup> `}` | `;` )
 >
@@ -21,7 +20,6 @@
 >   [IDENTIFIER]&nbsp;
 >   [_GenericParams_]<sup>?</sup>
 >   `(` _TupleFields_<sup>?</sup> `)`
->   _InheritedStruct_<sup>?</sup>
 >   [_WhereClause_]<sup>?</sup>
 >   `;`
 >
@@ -43,9 +41,6 @@
 > &nbsp;&nbsp; [_Visibility_]<sup>?</sup>\
 > &nbsp;&nbsp; `mut`<sup>?</sup>\
 > &nbsp;&nbsp; [_Type_]
->
-> _InheritedStruct_ :\
-> &nbsp;&nbsp; `:` [_Type_]
 
 A _struct_ is a nominal [struct type] defined with the keyword `struct`.
 
@@ -83,7 +78,18 @@ A field is mutable by using the `mut` keyword.
 
 ## Representation
 
-Structs are passed by value.
+Structs are passed by value by default. The `rc` attribute indicates the struct is passed by reference.
+
+## `rc` attribute
+
+Adding the `rc` attribute to a struct makes it a reference-counted struct and auto implements `Hash` based on the reference.
+
+```ds
+#[rc]
+struct S {}
+```
+
+The user may need to consider the `rc_eq!` and `rc_ne!` macros when comparing references or simply use `#[derive(RcEq)]`.
 
 ## External struct
 
@@ -91,6 +97,7 @@ When a struct includes the `extern` qualifier, it is an external struct imported
 
 - They must not specify fields.
 - They must not be initialized by code.
+- They must not contain the attribute `rc`; that is, they cannot be reference-counted.
 
 ## Field default
 
