@@ -1,6 +1,6 @@
 # DiveScript reference
 
-Reference for the DiveScript language for use with the Adobe AIR platform.
+DiveScript language reference.
 
 This book is written using [mdBook](https://rust-lang.github.io/mdBook/).
 
