@@ -79,17 +79,7 @@ let c = [Cookie, Cookie {}, Cookie, Cookie {}];
 
 ## Mutability
 
-A field is mutable by using the `mut` keyword. Such field can only be assigned to when the base is `Rc`.
-
-```ds
-struct S(mut str);
-
-let o = S("initial");
-o.0 = "update"; // ERROR!
-
-let o = Rc::new(o);
-o.0 = "update";
-```
+A field is mutable by using the `mut` keyword.
 
 ## Representation
 
