@@ -43,7 +43,6 @@ be used as the names of:
 > KW_MATCH          : `match`\
 > KW_MOD            : `mod`\
 > KW_MUT            : `mut`\
-> KW_OVERRIDE       : `override`\
 > KW_PUB            : `pub`\
 > KW_RETURN         : `return`\
 > KW_SELFVALUE      : `self`\
@@ -70,6 +69,7 @@ them to use these keywords.
 > **<sup>Lexer</sup>**\
 > KW_DO             : `do`\
 > KW_FINAL          : `final`\
+> KW_OVERRIDE       : `override`\
 > KW_PRIV           : `priv`\
 > KW_TYPEOF         : `typeof`
 

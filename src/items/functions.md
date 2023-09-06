@@ -8,7 +8,7 @@
 > &nbsp;&nbsp; &nbsp;&nbsp; ( [_BlockExpression_] | `;` )
 >
 > _FunctionQualifiers_ :\
-> &nbsp;&nbsp; `async`<sup>?</sup> `extern`<sup>?</sup> `override`<sup>?</sup>
+> &nbsp;&nbsp; `async`<sup>?</sup> `extern`<sup>?</sup>
 >
 > _FunctionParameters_ :\
 > &nbsp;&nbsp; &nbsp;&nbsp; _SelfParam_ `,`<sup>?</sup>\
@@ -25,11 +25,11 @@
 >
 > _FunctionParam_ :\
 > &nbsp;&nbsp; [_OuterAttribute_]<sup>\*</sup> (
->   _FunctionParamPattern_ | `...` | [_Type_]
+>   _FunctionParamPattern_ | [_Type_]
 > )
 >
 > _FunctionParamPattern_ :\
-> &nbsp;&nbsp; [_PatternNoTopAlt_] `:` ( [_Type_] | `...` )
+> &nbsp;&nbsp; [_PatternNoTopAlt_] `:` [_Type_]
 >
 > _FunctionReturnType_ :\
 > &nbsp;&nbsp; `->` [_Type_]
@@ -60,13 +60,7 @@ fn first((value, _): (i32, i32)) -> i32 { value }
 
 If the first parameter is a _SelfParam_, this indicates that the function is a
 [method]. Functions with a self parameter may only appear as an [associated
-function] in a [trait] or [implementation].
-
-If the function is a method named `new` belonging to a `struct`, it is a [constructor](#constructor) method.
-
-A parameter with the `...` token indicates a [variadic function], and may only
-be used as the last parameter of an external function. The variadic
-parameter may have an optional identifier, such as `args: ...`.
+function] in a [trait] or [implementation]. The type of the _SelfParam_, if specified, must be either `Self` or `Rc<Self>`; if not specified, it is `Self` by default.
 
 ## Function body
 
@@ -89,19 +83,6 @@ return {
 Functions without a body block are terminated with a semicolon. This form
 may only appear in a [trait] or when the function is qualified by `extern`.
 
-## Constructor
-
-A constructor method (a `new` method inside a `struct`) must have a signature that takes at least `self` and returns `()`. It is a compile error if the inherited structure is not directly `Object` and the constructor method is not external and does not contain a `super();` statement at the top of the block.
-
-Example of a constructor:
-
-```ds
-struct S;
-impl S {
-    fn new(self) {}
-}
-```
-
 ## Generic functions
 
 A _generic function_ allows one or more _parameterized types_ to appear in its
@@ -120,7 +101,7 @@ parameters to allow methods with that trait to be called on values of that
 type. This is specified using the `where` syntax:
 
 ```ds
-use ds::fmt::Debug;
+use ds::format::Debug;
 fn foo<T>(x: T) where T: Debug {}
 ```
 
@@ -128,7 +109,7 @@ When a generic function is referenced, its type is instantiated based on the
 context of the reference. For example, calling the `foo` function here:
 
 ```ds
-use ds::fmt::Debug;
+use ds::format::Debug;
 
 fn foo<T>(x: [T]) where T: Debug {
     // details elided
@@ -141,51 +122,14 @@ will instantiate type parameter `T` with `i32`.
 
 The type parameters can also be explicitly supplied in a trailing [path]
 component after the function name. This might be necessary if there is not
-sufficient context to determine the type parameters. For example,
-`memory::size_of::<u32>() == 4`.
+sufficient context to determine the type parameters.
 
 ## External functions
 
-The `extern` keyword indicates that a function is external and is imported from ActionScript. External functions must contain no body. An external function can be variadic.
+When a function includes the `extern` qualifier, it is an external function imported from a platform. External structs have the following restrictions:
 
-An external function may use the `#[actionscript]` attribute with the following possible key-value pairs and names:
-
-- `package = "q1.q2"`: indicates the ActionScript package that qualifies the function.
-- `protected`: indicates that the imported item uses the `protected` namespace of the outer ActionScript package.
-- `name = "name"`: indicates the ActionScript property name.
-- `get`: indicates that the imported ActionScript item is a variable or virtual property and that the external function is equivalent to a get-property operation.
-- `set`: indicates that the imported ActionScript item is a variable or virtual property and that the external function is equivalent to a set-property operation.
-
-Examples of external functions:
-
-```ds
-#[actionscript(package = "com.q")]
-extern fn some_function();
-
-#[actionscript(package = "com.q", name = "camelCase")]
-extern fn snake_case();
-
-#[actionscript(get, package = "com.q", name = "x")]
-extern fn x();
-
-impl S {
-    #[actionscript(get, name = "x")]
-    extern fn x(self) -> f64;
-
-    #[actionscript(set, name = "x")]
-    extern fn set_x(self, value: f64);
-}
-```
-
-## Overriding
-
-If a method function overrides a method in a super structure, it must be marked `override`. The override signature must be of the same function type.
-
-```ds
-impl S {
-    pub override fn f(self) {}
-}
-```
+- They must not contain a body.
+- They must contain a `#[import = "name"]` attribute.
 
 ## Async functions
 
@@ -260,7 +204,7 @@ fn documented() {
 > Note: Except for lints, it is idiomatic to only use outer attributes on
 > function items.
 
-The attributes that have meaning on a function are `actionscript`, [`cfg`], [`cfg_attr`], [`deprecated`],
+The attributes that have meaning on a function are `import`, [`cfg`], [`cfg_attr`], [`deprecated`],
 [`doc`], [the lint check
 attributes], [the procedural macro attributes], [the testing
 attributes], and [the optimization hint attributes]. Functions also accept
@@ -298,7 +242,6 @@ fn foo_oof(#[some_inert_attribute] arg: u32) {
 [STRING_LITERAL]: ../tokens.md#string-literals
 [_BlockExpression_]: ../expressions/block-expr.md
 [_GenericParams_]: generics.md
-[_Lifetime_]: ../trait-bounds.md
 [_PatternNoTopAlt_]: ../patterns.md
 [_Type_]: ../types.md#type-expressions
 [_WhereClause_]: generics.md#where-clauses
@@ -335,4 +278,3 @@ fn foo_oof(#[some_inert_attribute] arg: u32) {
 [method]: associated-items.md#methods
 [associated function]: associated-items.md#associated-functions-and-methods
 [implementation]: implementations.md
-[variadic function]: external-blocks.md#variadic-functions

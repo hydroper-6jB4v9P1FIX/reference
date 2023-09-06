@@ -79,60 +79,28 @@ let c = [Cookie, Cookie {}, Cookie, Cookie {}];
 
 ## Mutability
 
-A field is mutable by using the `mut` keyword.
+A field is mutable by using the `mut` keyword. Such field can only be assigned to when the base is `Rc`.
 
-## Constructor
+```ds
+struct S(mut str);
 
-When a struct directly implements a [constructor method](functions.md#constructor), the tuple initializer is replaced by a constructor call that executes additional code and returns an instance of the struct.
+let o = S("initial");
+o.0 = "update"; // ERROR!
+
+let o = Rc::new(o);
+o.0 = "update";
+```
 
 ## Representation
 
-A struct constructs managed object references. More generally, all types, excluding primitives, are managed object types.
-
-## Reference equality
-
-Deriving reference equality (`RefEq`) means a struct is compared by reference when using the equality operators.
-
-```ds
-#[derive(RefEq)]
-struct S;
-```
+Structs are passed by value.
 
 ## External struct
 
-When a struct includes the `extern` qualifier, it is an external struct imported from ActionScript.
+When a struct includes the `extern` qualifier, it is an external struct imported from a platform. External structs have the following restrictions:
 
-An external struct may use the `#[actionscript]` attribute with the following possible key-value pairs and names:
-
-- `package = "q1.q2"`: indicates the ActionScript package that qualifies the struct. The `public` visibility is used.
-- `name = "name"`: indicates the ActionScript property name.
-
-Example of an external struct:
-
-```ds
-#[actionscript(package = "com.q", name = "C")]
-extern struct C;
-```
-
-## Inheritance
-
-A struct `S2` may inherit another struct `S1` by using a colon (`struct S2 : S1;`). In that case, `S1` must be inheritable (`#[inheritable]`) and `S1` must not be a subtype of `S2` already.
-
-Cast and relationship operators are described in [Inheritance](../inheritance.md).
-
-Here is an example of inheritance:
-
-```ds
-use air::display::*;
-
-struct MySprite: DisplayObject;
-
-impl MySprite {
-    fn new(self) {
-        super();
-    }
-}
-```
+- They must not specify fields.
+- They must not be initialized by code.
 
 ## Field default
 

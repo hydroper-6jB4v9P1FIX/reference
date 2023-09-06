@@ -159,7 +159,7 @@ enum E {
 
 ## Representation
 
-Enum variants construct managed object references. More generally, all types, excluding primitives, are managed object types.
+Enums are passed by value.
 
 [IDENTIFIER]: ../identifiers.md
 [_GenericParams_]: generics.md
@@ -169,7 +169,6 @@ Enum variants construct managed object references. More generally, all types, ex
 [_StructFields_]: structs.md
 [_Visibility_]: ../visibility-and-privacy.md
 [enumerated type]: ../types/enum.md
-[`mem::discriminant`]: ../../std/mem/fn.discriminant.html
 [never type]: ../types/never.md
 [unit-only]: #unit-only-enum
 [numeric cast]: ../expressions/operator-expr.md#semantics

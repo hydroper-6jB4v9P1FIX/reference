@@ -111,7 +111,7 @@ and numeric literal tokens are accepted only with suffixes from the list below.
 
 | Integer | Floating-point |
 |---------|----------------|
-| `u32`, `i32`, `f64` |
+| `u8`, `i8`, `u16`, `i16`, `u32`, `i32`, `u64`, `i64` | `f32`, `f64` |
 
 ### Character and string literals
 
@@ -575,7 +575,7 @@ usages and meanings are defined in the linked pages.
 | `_`    | Underscore  | [Wildcard patterns], [Inferred types], Unnamed items in [constants], [use declarations], and [destructuring assignment]
 | `.`    | Dot         | [Field access][field], [Tuple index]
 | `..`   | DotDot      | [Range][range], [Struct expressions], [Patterns], [Range Patterns][rangepat]
-| `...`  | DotDotDot   | Variadic functions, [Range patterns], array initializer spread
+| `...`  | DotDotDot   | [Range patterns], array initializer spread
 | `..=`  | DotDotEq    | [Inclusive Range][range], [Range patterns]
 | `,`    | Comma       | Various separators
 | `;`    | Semi        | Terminator for various items and statements, [Array types]

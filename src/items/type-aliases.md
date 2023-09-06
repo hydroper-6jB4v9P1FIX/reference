@@ -19,7 +19,7 @@ type Point = (u32, u32);
 let p: Point = (41, 68);
 ```
 
-A type alias to a tuple-struct or unit-struct cannot be used to qualify that type's constructor:
+A type alias to a tuple-struct or unit-struct cannot be used to qualify that type's constructor; this rule does not apply to `use` declarations however.
 
 ```ds,compile_fail
 struct MyStruct(u32);

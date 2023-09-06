@@ -27,6 +27,4 @@
   - [Generic parameters](items/generics.md)
   - [Associated items](items/associated-items.md)
 - [Attributes](attributes.md)
-- [Inheritance](inheritance.md)
 - [Serialization](serialization.md)
-- [XML](xml.md)

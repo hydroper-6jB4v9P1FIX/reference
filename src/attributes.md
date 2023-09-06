@@ -50,8 +50,7 @@ Attributes may be applied to many things in the language:
 * Expressions accept outer attributes in limited situations, see [Expression
   Attributes] for details.
 * [Function][functions], [closure] and [function type]
-  parameters accept outer attributes. This includes attributes on variadic parameters
-  denoted with `...` in function types.
+  parameters accept outer attributes.
 
 Some examples of attributes:
 
@@ -157,7 +156,6 @@ Style | Example
 _MetaWord_ | `inline`
 _MetaNameValueStr_ | `doc = "example"`
 _MetaListPaths_ | `allow(unused, clippy::inline_always)`
-_MetaListNameValueStr_ | `actionscript(package = "a.b", name = "Core")`
 
 ## Active and inert attributes
 
@@ -230,13 +228,14 @@ The following is an index of all built-in attributes.
 - Features
   - `feature` — Used to enable unstable or experimental compiler features.
 - Type System
+  - `import` — Used by external functions and structs to indicate the name to import from a platform.
   - `inheritable` — Indicates that a structure is inheritable.
   - `discriminant` — Indicates the discriminant type of an enumeration.
   - [`inline`] — Indicates an inlined constant at any context.
   - [`non_exhaustive`] — Indicate that a type will have more fields/variants
     added in future.
 - Serialization
-  `ser`
+  `ser` — Used to alter behavior when serializing or deserializing a type.
 
 [Doc comments]: comments.md#doc-comments
 [ECMA-334]: https://www.ecma-international.org/publications/standards/Ecma-334.htm
@@ -315,4 +314,3 @@ The following is an index of all built-in attributes.
 [union]: items/unions.md
 [closure]: expressions/closure-expr.md
 [function pointer]: types/function-pointer.md
-[variadic functions]: items/external-blocks.html#variadic-functions

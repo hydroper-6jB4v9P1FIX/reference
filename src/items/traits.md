@@ -2,16 +2,13 @@
 
 > **<sup>Syntax</sup>**\
 > _Trait_ :\
-> &nbsp;&nbsp; _TraitQualifiers_<sup>?</sup> `trait` [IDENTIFIER]&nbsp;
+> &nbsp;&nbsp; `trait` [IDENTIFIER]&nbsp;
 >              [_GenericParams_]<sup>?</sup>
 >              ( `:` [_TypeParamBounds_]<sup>?</sup> )<sup>?</sup>
 >              [_WhereClause_]<sup>?</sup> `{`\
 > &nbsp;&nbsp;&nbsp;&nbsp; [_InnerAttribute_]<sup>\*</sup>\
 > &nbsp;&nbsp;&nbsp;&nbsp; [_AssociatedItem_]<sup>\*</sup>\
 > &nbsp;&nbsp; `}`
->
-> _TraitQualifiers_ :\
-> &nbsp;&nbsp; `extern`<sup>?</sup>
 
 A _trait_ describes an abstract interface type that other types can implement. This
 interface consists of [associated items], which come in three varieties:
@@ -183,22 +180,6 @@ fn main() {
     s.method_of_t1();
     s.method_of_s();
 }
-```
-
-## External trait
-
-When a trait includes the `extern` qualifier, it is an external interface imported from ActionScript.
-
-An external trait may use the `#[actionscript]` attribute with the following possible key-value pairs and names:
-
-- `package = "q1.q2"`: indicates the ActionScript package that qualifies the interface. The `public` visibility is used.
-- `name = "name"`: indicates the ActionScript property name.
-
-Example of an external trait:
-
-```ds
-#[actionscript(package = "com.q", name = "Itrfc")]
-extern trait Tr;
 ```
 
 [IDENTIFIER]: ../identifiers.md
