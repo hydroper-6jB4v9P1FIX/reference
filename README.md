@@ -10,7 +10,6 @@ The `theme/highlight.js` is took from building [this fork of highlight.js](https
 
 ## Missing sections
 
-- Attributes
 - Statements and expressions
 - Patterns
 - Type system

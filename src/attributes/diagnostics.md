@@ -20,7 +20,7 @@ For any lint check `C`:
 * `forbid(C)` is the same as `deny(C)`, but also forbids changing the lint
    level afterwards,
 
-> Note: The lint checks supported by `dsc` can be found via `dsc -W help`,
+> Note: The lint checks supported by the compiler can be found via `divescript build -W help`,
 > along with their default settings and are documented in the [dsc book].
 
 ```ds
@@ -79,7 +79,7 @@ pub mod m3 {
 }
 ```
 
-> Note: `dsc` allows setting lint levels on the
+> Note: The compiler allows setting lint levels on the
 > [command-line][dsc-lint-cli], and also supports [setting
 > caps][dsc-lint-caps] on the lints that are reported.
 
@@ -101,7 +101,7 @@ fn example() {
     let x = 1;
     // This generates an error because the result is unused and
     // "unused_must_use" is marked as "deny".
-    std::fs::remove_file("some_file"); // ERROR: unused `Result` that must be used
+    function_that_returns_result("argument"); // ERROR: unused `Result` that must be used
 }
 ```
 
@@ -109,8 +109,9 @@ There is a special group named "warnings" which includes all lints at the
 "warn" level. The "warnings" group ignores attribute order and applies to all
 lints that would otherwise warn within the entity.
 
-```ds,compile_fail
-# unsafe fn an_unsafe_fn() {}
+This is an example from the Rust language on which DiveScript is based:
+
+```rust
 // The order of these two attributes does not matter.
 #[deny(warnings)]
 // The unsafe_code lint is normally "allow" by default.
@@ -143,14 +144,14 @@ fn main() {
     // ...
 }
 
-// silence the `cmp_nan` clippy lint just for this function
-#[allow(clippy::cmp_nan)]
+// silence the `compare_nan` clippy lint just for this function
+#[allow(clippy::compare_nan)]
 fn foo() {
     // ...
 }
 ```
 
-> Note: `dsc` currently recognizes the tool lints for "[clippy]" and "[dsdoc]".
+> Note: The compiler currently recognizes the tool lints for "clippy" and "doc".
 
 ## The `deprecated` attribute
 
@@ -215,10 +216,6 @@ struct MustUse {
     // some fields
 }
 
-# impl MustUse {
-#   fn new() -> MustUse { MustUse {} }
-# }
-#
 // Violates the `unused_must_use` lint.
 MustUse::new();
 ```
@@ -258,11 +255,11 @@ when the call expression is a function from an implementation of the trait.
 ```ds
 trait Trait {
     #[must_use]
-    fn use_me(&self) -> i32;
+    fn use_me(self) -> i32;
 }
 
 impl Trait for i32 {
-    fn use_me(&self) -> i32 { 0i32 }
+    fn use_me(self) -> i32 { 0i32 }
 }
 
 // Violates the `unused_must_use` lint.
@@ -272,9 +269,7 @@ impl Trait for i32 {
 When used on a function in a trait implementation, the attribute does nothing.
 
 > Note: Trivial no-op expressions containing the value will not violate the
-> lint. Examples include wrapping the value in a type that does not implement
-> [`Drop`] and then not using that type and being the final expression of a
-> [block expression] that is not used.
+> lint.
 >
 > ```ds
 > #[must_use]

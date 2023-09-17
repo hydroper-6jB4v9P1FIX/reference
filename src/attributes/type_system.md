@@ -79,12 +79,12 @@ let config = Config { window_width: 640, window_height: 480 };
 
 // Can construct an instance of `Error`, new variants being introduced would
 // not result in this failing to compile.
-let error = Error::Message("foo".to_string());
+let error = Error::Message("foo");
 
 // Cannot construct an instance of `Message::Send` or `Message::Reaction`,
 // if new fields were added in a new version of `upstream` then this would
 // fail to compile, so it is disallowed.
-let message = Message::Send { from: 0, to: 1, contents: "foo".to_string(), };
+let message = Message::Send { from: 0, to: 1, contents: "foo", };
 let message = Message::Reaction(0);
 
 // Cannot construct an instance of `Message::Quit`, if this were converted to
@@ -108,7 +108,7 @@ use upstream::{Config, Error, Message};
 
 // Cannot match on a non-exhaustive enum without including a wildcard arm.
 match error {
-  Error::Message(ref s) => { },
+  Error::Message(s) => { },
   Error::Other => { },
   // would compile with: `_ => {},`
 }

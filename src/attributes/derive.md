@@ -5,11 +5,11 @@ data structures. It uses the [_MetaListPaths_] syntax to specify a list of
 traits to implement or paths to [derive macros] to process.
 
 For example, the following will create an [`impl` item] for the
-[`PartialEq`] and [`Clone`] traits for `Foo`, and the type parameter `T` will be
-given the `PartialEq` or `Clone` constraints for the appropriate `impl`:
+[`PartialEq`] and [`CloneContent`] traits for `Foo`, and the type parameter `T` will be
+given the `PartialEq` or `CloneContent` constraints for the appropriate `impl`:
 
 ```ds
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, CloneContent)]
 struct Foo<T> {
     a: i32,
     b: T,
@@ -19,9 +19,8 @@ struct Foo<T> {
 The generated `impl` for `PartialEq` is equivalent to
 
 ```ds
-# struct Foo<T> { a: i32, b: T }
 impl<T: PartialEq> PartialEq for Foo<T> {
-    fn eq(&self, other: &Foo<T>) -> bool {
+    fn eq(self, other: Foo<T>) -> bool {
         self.a == other.a && self.b == other.b
     }
 }
