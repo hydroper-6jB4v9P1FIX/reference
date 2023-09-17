@@ -33,4 +33,6 @@
   - [Diagnostics](attributes/diagnostics.md)
   - [Limits](attributes/limits.md)
   - [Type system](attributes/type_system.md)
+- [Statements and expressions](statements-and-expressions.md)
+  - [Statements](statements.md)
 - [Serialization](serialization.md)
